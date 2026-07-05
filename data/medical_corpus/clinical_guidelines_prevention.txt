@@ -1,0 +1,76 @@
+================================================================================
+AHA/ACC 2019 CLINICAL PRACTICE GUIDELINES: PRIMARY PREVENTION OF CARDIOVASCULAR DISEASE
+================================================================================
+
+1. Cardiovascular Risk Stratification:
+- Calculate 10-year ASCVD risk using the Pooled Cohort Equations (PCE) for all adults aged 40–75 years.
+- Risk Categories:
+  * Low Risk: <5%
+  * Borderline Risk: 5% to <7.5%
+  * Intermediate Risk: 7.5% to <20%
+  * High Risk: >=20%
+- Risk enhancers to consider: family history of premature ASCVD, chronic kidney disease (CKD), metabolic syndrome, high-risk ethnicities (e.g., South Asian), chronic inflammatory conditions (e.g., rheumatoid arthritis), elevated biomarkers (e.g., hs-CRP >= 2.0 mg/L, Lp(a) >= 50 mg/dL).
+
+2. Statin Therapy Guidelines:
+- High-risk patients (10-yr risk >= 20%): Initiate high-intensity statin therapy (Atorvastatin 40-80 mg daily or Rosuvastatin 20-40 mg daily) to achieve a >= 50% reduction in LDL cholesterol.
+- Intermediate-risk patients (7.5% to <20%): Initiate moderate-intensity statin therapy (Atorvastatin 10-20 mg daily, Rosuvastatin 5-10 mg daily, or Simvastatin 20-40 mg daily) to achieve a 30% to 49% reduction in LDL.
+- Diabetes Mellitus: All patients aged 40–75 with diabetes should receive at least moderate-intensity statin therapy, regardless of calculated 10-year ASCVD risk. If 10-year risk is high (>=20% or multiple risk factors), consider high-intensity statin.
+- LDL-C Targets: Achieve LDL-C < 70 mg/dL for high-risk patients; < 55 mg/dL for very high-risk patients (e.g., established ASCVD + multiple events).
+
+3. Blood Pressure Management:
+- Stage 1 Hypertension (BP 130-139 / 80-89 mmHg):
+  * Calculate 10-year ASCVD risk. If risk is high (>=10%) or patient has diabetes or CKD, start pharmacological therapy with BP target < 130/80 mmHg.
+  * If risk is low (<10%), initiate 3-6 months of intensive lifestyle modifications before re-assessing.
+- Stage 2 Hypertension (BP >= 140/90 mmHg):
+  * Initiate pharmacological treatment immediately (typically with 2 agents of different classes). Target BP < 130/80 mmHg.
+  * First-line antihypertensive agents: Thiazide diuretics, Calcium Channel Blockers (CCBs) like Amlodipine, ACE inhibitors (like Lisinopril), or ARBs (like Losartan). Do not combine ACE inhibitors and ARBs.
+
+4. Aspirin for Primary Prevention:
+- Aspirin (75–100 mg orally daily) should be used infrequently for primary prevention because the benefit of bleeding reduction is offset by bleeding risk.
+- May be considered in highly selected adults aged 40–70 years with high ASCVD risk (>=20%) and low bleeding risk.
+- Do NOT prescribe aspirin for primary prevention in adults aged >= 70 years.
+
+5. Lifestyle Recommendations:
+- Diet: Mediterranean-style or DASH diet rich in vegetables, fruits, whole grains, legumes, healthy fats (olive oil), fish, and lean poultry. Limit saturated fats, trans fats, sodium (< 2300 mg/day, ideally < 1500 mg/day), and sugar-sweetened beverages.
+- Exercise: Accumulate at least 150 minutes per week of moderate-intensity aerobic physical activity (e.g., brisk walking) or 75 minutes per week of vigorous-intensity activity.
+- Weight: For overweight and obese individuals, target a 5% to 10% reduction in body weight to improve glycemic control, blood pressure, and lipid profiles.
+
+================================================================================
+ADA 2024 STANDARDS OF CARE IN DIABETES: PHARMACOLOGIC TREATMENT AND COMORBIDITIES
+================================================================================
+
+1. Glycemic Targets:
+- Target HbA1c < 7.0% for most non-pregnant adults.
+- Target may be relaxed to < 8.0% or higher for patients with limited life expectancy, history of severe hypoglycemia, or extensive comorbidities.
+- Target may be tightened to < 6.5% for newly diagnosed patients with long life expectancy and no history of cardiovascular disease.
+- Fasting plasma glucose target: 80–130 mg/dL (4.4–7.2 mmol/L).
+- Postprandial glucose target (1-2 hours after meal): < 180 mg/dL (10.0 mmol/L).
+
+2. First-Line Pharmacotherapy:
+- Metformin remains a first-line therapy for type 2 diabetes, combined with lifestyle modification.
+- Metformin Dosing: Start at 500 mg once or twice daily, titrate up to 1000 mg twice daily. Maximum effective dose: 2000 mg/day.
+- Renal Adjustment: Metformin contraindicated if eGFR < 30 mL/min/1.73m2. Do not initiate if eGFR 30–45 mL/min/1.73m2; if already on, consider 50% dose reduction.
+
+3. Cardiorenal Protection in Type 2 Diabetes:
+- In patients with established ASCVD, high risk of ASCVD (age >= 55 with stenosis/hypertrophy), Heart Failure (HF), or Chronic Kidney Disease (CKD):
+  * SGLT2 Inhibitors (e.g., Empagliflozin, Dapagliflozin) or GLP-1 Receptor Agonists (e.g., Semaglutide, Liraglutide) with demonstrated cardiovascular benefit are recommended as part of the glucose-lowering regimen, INDEPENDENT of baseline HbA1c or Metformin use.
+- SGLT2 Inhibitors are preferred in:
+  * Heart Failure (HFrEF or HFpEF) to reduce risk of HF hospitalization and CV death.
+  * Chronic Kidney Disease (eGFR 25–60 or albuminuria uACR >= 200 mg/g) to delay progression of kidney disease and reduce CV events.
+- GLP-1 Receptor Agonists are preferred in:
+  * Established ASCVD to reduce risk of major adverse cardiovascular events (MACE).
+  * Overweight or obese patients to achieve significant weight loss (5% to 15%+).
+
+4. Prediabetes Prevention:
+- Prediabetes criteria: HbA1c 5.7%–6.4%, Fasting Glucose 100–125 mg/dL, or 2-hour PG 140–199 mg/dL.
+- Refer all patients with prediabetes to a structured lifestyle program (e.g., National DPP) targeting 7% weight loss and 150 minutes of moderate activity per week.
+- Metformin therapy for prediabetes should be considered in those at highest risk: BMI >= 35 kg/m2, age < 60 years, women with prior gestational diabetes (GDM), or those with rising HbA1c despite lifestyle changes.
+
+5. Screening Frequencies:
+- Screen all asymptomatic adults starting at age 35, or earlier if BMI >= 25 kg/m2 and have one or more risk factors.
+- Repeat screening at least every 3 years if normal; annually if prediabetes.
+- HbA1c monitoring: Every 3 months if not meeting targets or therapy changed; every 6 months if stable and meeting targets.
+- Annual diabetic complication screenings:
+  * Nephropathy: Urine albumin-to-creatinine ratio (uACR) and eGFR.
+  * Neuropathy: Comprehensive foot exam (monofilament, pulses).
+  * Retinopathy: Dilated eye exam.
