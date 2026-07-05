@@ -45,32 +45,81 @@ SERVERS = [
 ]
 
 
-def _run_server(server: dict, request: str) -> str:
-    proc = subprocess.run(
+def _run_mcp_commands(server: dict, commands: list[dict]) -> list[str]:
+    """Run a sequence of commands on a single server process session and return their stdout lines."""
+    proc = subprocess.Popen(
         [PYTHON, server["script"]],
-        input=request,
-        capture_output=True,
+        stdin=subprocess.PIPE,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.DEVNULL,  # Avoid deadlock by discarding stderr
         text=True,
         encoding="utf-8",
-        timeout=20,
         cwd=ROOT,
     )
-    return proc.stdout.strip()
+    
+    responses = []
+    try:
+        for cmd in commands:
+            request_line = json.dumps(cmd) + "\n"
+            proc.stdin.write(request_line)
+            proc.stdin.flush()
+            
+            # Read one response line
+            line = proc.stdout.readline()
+            responses.append(line.strip())
+    finally:
+        try:
+            proc.stdin.close()
+        except Exception:
+            pass
+        try:
+            proc.terminate()
+            proc.wait(timeout=2)
+        except Exception:
+            pass
+            
+    return responses
 
 
 def smoke_test_server(server: dict) -> bool:
-    request = json.dumps({"jsonrpc": "2.0", "id": 1, "method": "tools/list", "params": {}}) + "\n"
+    init_cmd = {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "initialize",
+        "params": {
+            "protocolVersion": "2024-11-05",
+            "capabilities": {},
+            "clientInfo": {"name": "smoke-test-client", "version": "1.0.0"},
+        },
+    }
+    list_cmd = {
+        "jsonrpc": "2.0",
+        "id": 2,
+        "method": "tools/list",
+        "params": {},
+    }
+    
     try:
-        stdout = _run_server(server, request)
-        for line in reversed(stdout.splitlines()):
-            if line.strip().startswith("{"):
-                parsed = json.loads(line)
-                tools = parsed.get("result", {}).get("tools", [])
-                tool_names = [t.get("name", "?") for t in tools]
-                print(f"    [OK] {server['name']}: {len(tools)} tools -> {', '.join(tool_names)}")
-                return True
-        print(f"    [FAIL] {server['name']}: No valid JSON-RPC response")
-        return False
+        responses = _run_mcp_commands(server, [init_cmd, list_cmd])
+        if len(responses) < 2:
+            print(f"    [FAIL] {server['name']}: Insufficient responses from server")
+            return False
+            
+        init_resp = json.loads(responses[0])
+        list_resp = json.loads(responses[1])
+        
+        if "error" in init_resp:
+            print(f"    [FAIL] {server['name']}: Initialization error: {init_resp['error']}")
+            return False
+            
+        if "error" in list_resp:
+            print(f"    [FAIL] {server['name']}: list_tools error: {list_resp['error']}")
+            return False
+            
+        tools = list_resp.get("result", {}).get("tools", [])
+        tool_names = [t.get("name", "?") for t in tools]
+        print(f"    [OK] {server['name']}: {len(tools)} tools -> {', '.join(tool_names)}")
+        return True
     except subprocess.TimeoutExpired:
         print(f"    [FAIL] {server['name']}: Timeout")
         return False
@@ -80,24 +129,40 @@ def smoke_test_server(server: dict) -> bool:
 
 
 def test_tool_call(server: dict, tool_name: str, args: dict) -> bool:
-    request = json.dumps({
-        "jsonrpc": "2.0", "id": 2,
+    init_cmd = {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "initialize",
+        "params": {
+            "protocolVersion": "2024-11-05",
+            "capabilities": {},
+            "clientInfo": {"name": "smoke-test-client", "version": "1.0.0"},
+        },
+    }
+    call_cmd = {
+        "jsonrpc": "2.0",
+        "id": 2,
         "method": "tools/call",
         "params": {"name": tool_name, "arguments": args},
-    }) + "\n"
+    }
+    
     try:
-        stdout = _run_server(server, request)
-        for line in reversed(stdout.splitlines()):
-            if line.strip().startswith("{"):
-                parsed = json.loads(line)
-                result = parsed.get("result", {})
-                content = result.get("content", [{}])
-                text = content[0].get("text", "")[:150] if content else "(no content)"
-                first_arg = str(list(args.values())[0])[:30]
-                print(f"    [OK] {tool_name}({first_arg}): {text[:100]}...")
-                return True
-        print(f"    [FAIL] {tool_name}: No result in response")
-        return False
+        responses = _run_mcp_commands(server, [init_cmd, call_cmd])
+        if len(responses) < 2:
+            print(f"    [FAIL] {tool_name}: Insufficient responses from server")
+            return False
+            
+        call_resp = json.loads(responses[1])
+        if "error" in call_resp:
+            print(f"    [FAIL] {tool_name}: Error in response: {call_resp['error']}")
+            return False
+            
+        result = call_resp.get("result", {})
+        content = result.get("content", [{}])
+        text = content[0].get("text", "")[:150] if content else "(no content)"
+        first_arg = str(list(args.values())[0])[:30]
+        print(f"    [OK] {tool_name}({first_arg}): {text[:100]}...")
+        return True
     except Exception as e:
         print(f"    [FAIL] {tool_name}: {e}")
         return False

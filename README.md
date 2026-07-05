@@ -101,6 +101,17 @@ python start_mcp_servers.py --test
 
 ---
 
+## 🧪 Step 4: Running Unit Tests
+
+The backend contains automated tests verifying the RAG pipeline and clinical privacy security guard.
+
+Ensure your virtual environment is active, then run:
+```bash
+pytest
+```
+
+---
+
 ## 🔍 Troubleshooting "Failed to Get Request" Errors
 
 If the frontend displays errors when loading patient profiles or running debates:
