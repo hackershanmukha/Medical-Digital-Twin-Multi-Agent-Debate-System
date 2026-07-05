@@ -17,8 +17,8 @@ class Settings(BaseSettings):
     environment: str = "development"
 
     # Database Settings
-    # default to PostgreSQL, can override in env
-    database_url: str = "postgresql+asyncpg://postgres:postgres@localhost:5432/medical_ai"
+    # default to SQLite, can override in env
+    database_url: str = "sqlite+aiosqlite:///./data/medical_ai.db"
     database_echo: bool = False
 
     # Security & JWT

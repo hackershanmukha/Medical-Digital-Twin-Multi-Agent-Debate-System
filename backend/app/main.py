@@ -1,10 +1,13 @@
 import sys
 import os
 
-# Allow importing modules from the project root directory
+# Allow importing modules from the project root and backend directories
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+BACKEND_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 if ROOT not in sys.path:
     sys.path.insert(0, ROOT)
+if BACKEND_DIR not in sys.path:
+    sys.path.insert(0, BACKEND_DIR)
 
 from contextlib import asynccontextmanager
 from fastapi import FastAPI
